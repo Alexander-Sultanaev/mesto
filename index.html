@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="vendor/normalize.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
 <body>
@@ -15,10 +14,90 @@
       <div class="header__line"></div>
     </header>
     <main class="main">
-      <section class="profile"></section>
-      <section class="elements"></section>
-      <section class="footer"></section>
+      <section class="profile">
+        <img src="/images/profile/profile__image.jpg" alt="Аватар профиля" class="profile__image">
+        <div class="profile__content">
+          <div class="profile__info">
+            <div class="profile__wraper">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__button-edit"></button>
+            </div>
+            <p class="profile__subname">Исследователь океана</p>
+          </div>
+          <button class="profile__button-add"></button>
+        </div>
+      </section>
+      <section class="gallery">
+        <ul class="gallery__links">
+          <li class="gallery__card">
+            <img src="/images/gallery/gallery__karacheevsk.jpg" alt="" class="gallery__image">
+            <div class="gallery__wraper">
+              <h3 class="gallery__title">Карачаевск</h3>
+              <button class="gallery__button-like"></button>
+            </div>
+          </li>
+          <li class="gallery__card">
+            <img src="/images/gallery/gallery__elbrus.jpg" alt="" class="gallery__image">
+            <div class="gallery__wraper">
+              <h3 class="gallery__title">Гора Эльбрус</h3>
+              <button class="gallery__button-like"></button>
+            </div>
+          </li>
+          <li class="gallery__card">
+            <img src="/images/gallery/gallery__dombay.jpg" alt="" class="gallery__image">
+            <div class="gallery__wraper">
+              <h3 class="gallery__title">Домбай</h3>
+              <button class="gallery__button-like"></button>
+            </div>
+          </li>
+          <li class="gallery__card">
+            <img src="/images/gallery/gallery__baikal.jpg" alt="" class="gallery__image">
+            <div class="gallery__wraper">
+              <h3 class="gallery__title">Байкал</h3>
+              <button class="gallery__button-like"></button>
+            </div>
+          </li>
+          <li class="gallery__card">
+            <img src="/images/gallery/gallery__sochi.jpg" alt="" class="gallery__image">
+            <div class="gallery__wraper">
+              <h3 class="gallery__title">Сочи</h3>
+              <button class="gallery__button-like"></button>
+            </div>
+          </li>
+          <li class="gallery__card">
+            <img src="/images/gallery/gallery__kamchatka.jpg" alt="" class="gallery__image">
+            <div class="gallery__wraper">
+              <h3 class="gallery__title">Камчатка</h3>
+              <button class="gallery__button-like"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <section class="footer">
+        <p class="footer__copyright">&copy; 2022 Mesto Russia Alexander Sultanaev</p>
+      </section>
+      <section class="popup">
+        <div class="popup__container">
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <form class="popup__form">
+            <fieldset class="popup__field">
+              <label class="popup__label">
+                <input type="text" class="popup__input popup__input_type_name" placeholder="Жак-Ив Кусто">
+                <div class="popup__line"></div>
+              </label>
+              <label class="popup__label">
+                <input type="text" class="popup__input popup__input_type_subname" placeholder="Исследователь океана">
+                <div class="popup__line"></div>
+              </label>
+              <button type="submit" class="popup__button-save">Сохранить</button>
+            </fieldset>
+          </form>
+          <button class="popup__button-close"></button>
+        </div>
+        
+      </section>
     </main>
   </div>
+  <script type="text/javascript" src=".//scripts/index.js"></script>
 </body>
 </html>
