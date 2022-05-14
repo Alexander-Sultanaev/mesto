@@ -1,6 +1,6 @@
 /*page style*/
-@import url(../fonts/inter.css);
 @import url(../vendor/normalize.css);
+@import url(../fonts/inter.css);
 @import url(../blocks/page/page.css);
 /*header*/
 @import url(../blocks/header/header.css);

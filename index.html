@@ -5,13 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
-  <title>Mesto</title>
+  <title>Место</title>
 </head>
 <body>
   <div class="page">
     <header class="header">
       <div class="header__logo"></div>
-      <div class="header__line"></div>
     </header>
     <main class="main">
       <section class="profile">
@@ -32,42 +31,42 @@
           <li class="gallery__card">
             <img src="./images/gallery/gallery__karacheevsk.jpg" alt="Достопримечательность Карачеевска" class="gallery__image">
             <div class="gallery__wraper">
-              <h3 class="gallery__title">Карачаевск</h3>
+              <h2 class="gallery__title">Карачаевск</h2>
               <button class="gallery__button-like"></button>
             </div>
           </li>
           <li class="gallery__card">
             <img src="./images/gallery/gallery__elbrus.jpg" alt="Красивые виды горы Эльбрус" class="gallery__image">
             <div class="gallery__wraper">
-              <h3 class="gallery__title">Гора Эльбрус</h3>
+              <h2 class="gallery__title">Гора Эльбрус</h2>
               <button class="gallery__button-like"></button>
             </div>
           </li>
           <li class="gallery__card">
             <img src="./images/gallery/gallery__dombay.jpg" alt="Горы и леса Домбай" class="gallery__image">
             <div class="gallery__wraper">
-              <h3 class="gallery__title">Домбай</h3>
+              <h2 class="gallery__title">Домбай</h2>
               <button class="gallery__button-like"></button>
             </div>
           </li>
           <li class="gallery__card">
             <img src="./images/gallery/gallery__baikal.jpg" alt="Берега Байкала" class="gallery__image">
             <div class="gallery__wraper">
-              <h3 class="gallery__title">Байкал</h3>
+              <h2 class="gallery__title">Байкал</h2>
               <button class="gallery__button-like"></button>
             </div>
           </li>
           <li class="gallery__card">
             <img src="./images/gallery/gallery__sochi.jpg" alt="Ласа Сочи" class="gallery__image">
             <div class="gallery__wraper">
-              <h3 class="gallery__title">Сочи</h3>
+              <h2 class="gallery__title">Сочи</h2>
               <button class="gallery__button-like"></button>
             </div>
           </li>
           <li class="gallery__card">
             <img src="./images/gallery/gallery__kamchatka.jpg" alt="Пейзаж камчатки" class="gallery__image">
             <div class="gallery__wraper">
-              <h3 class="gallery__title">Камчатка</h3>
+              <h2 class="gallery__title">Камчатка</h2>
               <button class="gallery__button-like"></button>
             </div>
           </li>
@@ -79,16 +78,10 @@
       <section class="popup">
         <div class="popup__container">
           <h3 class="popup__title">Редактировать профиль</h3>
-          <form class="popup__form">
+          <form name="popup__profile" class="popup__form">
             <fieldset class="popup__field">
-              <label class="popup__label">
-                <input type="text" class="popup__input popup__input_type_name" placeholder="Жак-Ив Кусто">
-              </label>
-              <div class="popup__line"></div>
-              <label class="popup__label">
-                <input type="text" class="popup__input popup__input_type_subname" placeholder="Исследователь океана">
-              </label>
-              <div class="popup__line"></div>
+              <input name="profile__name" type="text" class="popup__input popup__input_type_name" placeholder="Жак-Ив Кусто">
+              <input name="profile__subname" type="text" class="popup__input popup__input_type_subname" placeholder="Исследователь океана">
               <button type="submit" class="popup__button-save">Сохранить</button>
             </fieldset>
           </form>
