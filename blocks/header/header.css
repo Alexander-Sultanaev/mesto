@@ -11,3 +11,9 @@
   max-width: 880px;
   opacity: 0.7;
 }
+
+@media screen and (min-width: 319px) and (max-width: 690px){
+  .header{
+    padding-top: 28px;
+  }
+}

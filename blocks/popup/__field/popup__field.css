@@ -21,6 +21,14 @@
   bottom: 158px;
   opacity: 0.2;
 }
+@media screen and (min-width: 319px) and (max-width: 690px){
+  .popup__field::after{
+    bottom: 91px;
+  }
+  .popup__field::before{
+    bottom: 151px;
+  }
+}
 
 /*не нашел способ прописать псевдо элементы к инпутам, на стэк оверфлоу 5 летней давность скзано 
 что к инпутам псевдо элементы не применяются*/
