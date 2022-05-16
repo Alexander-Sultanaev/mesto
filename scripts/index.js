@@ -10,12 +10,12 @@ const popupContainer = popup.querySelector('.popup__container');
 
 function togglePopup(event) {
   popup.classList.toggle("popup_opened")
+  nameInput.value = profName.textContent;
+  subnameInput.value = profSubname.textContent;
 };
 
 function closePopup (event){
   popup.classList.remove("popup_opened")
-  nameInput.value = profName.textContent;
-  subnameInput.value = profSubname.textContent;
 };
 
 function formSubmitHandler (event) {
