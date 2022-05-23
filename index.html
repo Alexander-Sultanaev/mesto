@@ -75,17 +75,30 @@
       <section class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia Alexander Sultanaev</p>
       </section>
-      <section class="popup">
+      <section class="popup popup_type_profile">
         <div class="popup__container">
           <h3 class="popup__title">Редактировать профиль</h3>
-          <form name="popup__profile" class="popup__form">
+          <form name="popup__profile" class="popup__form popup__form_type_profile">
             <fieldset class="popup__field">
               <input name="profile__name" type="text" class="popup__input popup__input_type_name" placeholder="Жак-Ив Кусто">
               <input name="profile__subname" type="text" class="popup__input popup__input_type_subname" placeholder="Исследователь океана">
               <button type="submit" class="popup__button-save">Сохранить</button>
             </fieldset>
           </form>
-          <button type="reset" class="popup__button-close"></button>
+          <button type="reset" class="popup__button-close popup__button-close_profile"></button>
+        </div>
+      </section>
+      <section class="popup popup_type_card">
+        <div class="popup__container">
+          <h3 class="popup__title">Новое место</h3>
+          <form name="popup__profile" class="popup__form popup__form_type_card">
+            <fieldset class="popup__field">
+              <input name="profile__title" type="text" class="popup__input popup__input_type_title" placeholder="Название">
+              <input name="profile__scr" type="url" class="popup__input popup__input_type_src" placeholder="Ссылка на картинку">
+              <button type="submit" class="popup__button-save">Сохранить</button>
+            </fieldset>
+          </form>
+          <button type="reset" class="popup__button-close popup__button-close_card"></button>
         </div>
       </section>
     </main>
