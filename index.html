@@ -27,49 +27,8 @@
         </div>
       </section>
       <section class="gallery">
-        <ul class="gallery__links">
-          <li class="gallery__card">
-            <img src="./images/gallery/gallery__karacheevsk.jpg" alt="Достопримечательность Карачеевска" class="gallery__image">
-            <div class="gallery__wraper">
-              <h2 class="gallery__title">Карачаевск</h2>
-              <button type="button" class="gallery__button-like"></button>
-            </div>
-          </li>
-          <li class="gallery__card">
-            <img src="./images/gallery/gallery__elbrus.jpg" alt="Красивые виды горы Эльбрус" class="gallery__image">
-            <div class="gallery__wraper">
-              <h2 class="gallery__title">Гора Эльбрус</h2>
-              <button type="button" class="gallery__button-like"></button>
-            </div>
-          </li>
-          <li class="gallery__card">
-            <img src="./images/gallery/gallery__dombay.jpg" alt="Горы и леса Домбай" class="gallery__image">
-            <div class="gallery__wraper">
-              <h2 class="gallery__title">Домбай</h2>
-              <button type="button" class="gallery__button-like"></button>
-            </div>
-          </li>
-          <li class="gallery__card">
-            <img src="./images/gallery/gallery__baikal.jpg" alt="Берега Байкала" class="gallery__image">
-            <div class="gallery__wraper">
-              <h2 class="gallery__title">Байкал</h2>
-              <button type="button" class="gallery__button-like"></button>
-            </div>
-          </li>
-          <li class="gallery__card">
-            <img src="./images/gallery/gallery__sochi.jpg" alt="Ласа Сочи" class="gallery__image">
-            <div class="gallery__wraper">
-              <h2 class="gallery__title">Сочи</h2>
-              <button type="button" class="gallery__button-like"></button>
-            </div>
-          </li>
-          <li class="gallery__card">
-            <img src="./images/gallery/gallery__kamchatka.jpg" alt="Пейзаж камчатки" class="gallery__image">
-            <div class="gallery__wraper">
-              <h2 class="gallery__title">Камчатка</h2>
-              <button type="button" class="gallery__button-like"></button>
-            </div>
-          </li>
+        <ul class="gallery__list">
+          
         </ul>
       </section>
       <section class="footer">
@@ -82,7 +41,7 @@
             <fieldset class="popup__field">
               <input name="profile__name" type="text" class="popup__input popup__input_type_name" placeholder="Жак-Ив Кусто">
               <input name="profile__subname" type="text" class="popup__input popup__input_type_subname" placeholder="Исследователь океана">
-              <button type="submit" class="popup__button-save">Сохранить</button>
+              <button type="submit" class="popup__button-save popup__button-save_profile">Сохранить</button>
             </fieldset>
           </form>
           <button type="reset" class="popup__button-close popup__button-close_profile"></button>
@@ -94,14 +53,26 @@
           <form name="popup__profile" class="popup__form popup__form_type_card">
             <fieldset class="popup__field">
               <input name="profile__title" type="text" class="popup__input popup__input_type_title" placeholder="Название">
-              <input name="profile__scr" type="url" class="popup__input popup__input_type_src" placeholder="Ссылка на картинку">
-              <button type="submit" class="popup__button-save">Сохранить</button>
+              <input name="profile__scr" type="url" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку">
+              <button type="submit" class="popup__button-save popup__button-save_card">Сохранить</button>
             </fieldset>
           </form>
           <button type="reset" class="popup__button-close popup__button-close_card"></button>
         </div>
       </section>
     </main>
+
+    <template class="gallery__template">
+      <li class="gallery__card">
+        <img src="./" alt="" class="gallery__image">
+        <button type="button" class="gallery__button-delete"></button>
+        <div class="gallery__wraper">
+          <h2 class="gallery__title"></h2>
+          <button type="button" class="gallery__button-like"></button>
+        </div>
+      </li>
+    </template>
+
   </div>
   <script src="./scripts/index.js"></script>
 </body>

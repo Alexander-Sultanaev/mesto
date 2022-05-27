@@ -1,4 +1,4 @@
-.gallery__links {
+.gallery__list {
   max-width: 880px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -10,7 +10,7 @@
 }
 
 @media screen and (min-width: 690px) and (max-width: 879px){
-  .gallery__links {
+  .gallery__list {
     justify-content: space-around;
     max-width: 690px;
     grid-template-columns: repeat(2, 1fr);
@@ -18,7 +18,7 @@
 }
 
 @media screen and (min-width: 319px) and (max-width: 690px){
-  .gallery__links{
+  .gallery__list{
     grid-template-columns: 1fr;
   }
 }
