@@ -73,6 +73,8 @@ const cardsList = document.querySelector('.gallery__list');
 const popupCard = document.querySelector('.popup_type_card');
 const closeButtonCard = popupCard.querySelector('.popup__button-close_card');
 const formButtonSubmit = document.querySelector('.popup__form_type_card');
+const popupImage = document.querySelector('.popup_type_image');
+const closeButtonImage = popupImage.querySelector('.popup__button-close_image');
 //открываем попап
 function openPopupCard (event) {
   popupCard.classList.add("popup_opened");
@@ -84,7 +86,6 @@ function closePopupCard (event) {
 
 ///////////////// создаем карточки через js
 const elementTemplate = document.querySelector('.gallery__template').content;
-
 initialCards.forEach((element) => {
   cardsList.prepend(createElement(element));
 });
@@ -96,11 +97,39 @@ function createElement (element) {
   const elementImage = newElement.querySelector('.gallery__image');
   elementImage.src = element.link;
   elementImage.alt = element.name;
+  let buttonLike = newElement.querySelector('.gallery__button-like');
+  buttonLike.addEventListener('click', likeElement);
+  let buttonDelete = newElement.querySelector('.gallery__button-delete');
+  buttonDelete.addEventListener('click', deleteElement);
+  let openImage = newElement.querySelector('.gallery__image');
+  openImage.addEventListener('click', openPopupImage);
   return newElement;
 };
 
 //кнопака лайка
+function likeElement(event) {
+  event.target.classList.toggle("gallery__button-like_active");
+};
 
+//кнопка дэлит
+function deleteElement(event) {
+  event.target.closest('.gallery__card').remove();
+};
+
+//открытия картинки
+function openPopupImage(event) {
+  const increasedImage = popupImage.querySelector('.popup__image');
+  increasedImage.src = event.target.src;
+  increasedImage.alt = event.target.alt;
+  const IncreasedElementCaption = popupImage.querySelector('.popup__caption');
+  IncreasedElementCaption.textContent = event.target.alt;
+  popupImage.classList.add("popup_opened")
+};
+
+//закрытие картинки
+function closePopupImage(event) {
+  popupImage.classList.remove("popup_opened");
+};
 
 //добавляем картоки
 function newElementSubmit(event) {
@@ -111,10 +140,10 @@ function newElementSubmit(event) {
   cardsList.prepend(createElement(newCard));
   cardNameInput.value = null;
   cardLinkInput.value = null;
+  closePopupCard();
 };
 
-
-
+closeButtonImage.addEventListener('click', closePopupImage);
 openButtonCard.addEventListener('click', openPopupCard);
 closeButtonCard.addEventListener('click', closePopupCard);
 formButtonSubmit.addEventListener('submit', newElementSubmit);
