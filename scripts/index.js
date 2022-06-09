@@ -20,36 +20,56 @@ const popupImage = document.querySelector('.popup_type_image');
 const elementTemplate = document.querySelector('.gallery__template').content;
 
 //открытие попапа
-function openPopup(event) {
-  event.classList.add("popup_opened")
- };
+function openPopup(popup) {
+  popup.addEventListener("mousedown", closePopupWithOverlay);
+  document.addEventListener("keydown", closePopupWithEscape);
+  popup.classList.add("popup_opened");
+};
+
 //попап профиля
 function openPopupProfile() {
   nameInput.value = profName.textContent;
   subnameInput.value = profSubname.textContent;
   openPopup(popupProfile);
 };
-//отпроаление данных на страницу
-function formSubmitHandlerProfile(event) {
-  event.preventDefault();
-  profName.textContent = nameInput.value;
-  profSubname.textContent = subnameInput.value;
-  closePopup(popupProfile);
-};
+
 //открытие попапа карточки
 function openPopupCard() {
   openPopup(popupCard);
 };
+
 //закрытие всех попапов 
 closeButtonPopup.forEach((button) => {
   const popup = button.closest(".popup");
   button.addEventListener("click", () => closePopup(popup));
 });
 
+
+//Функция удаления класса открытия попапа
 function closePopup(popup) {
-  popup.classList.remove("popup_opened")
+  popup.removeEventListener("mousedown", closePopupWithOverlay);
+  document.removeEventListener("keydown", closePopupWithEscape);
+  popup.classList.remove("popup_opened");
 };
 
+function closeOpenedPopup() {
+  const openedPopup = document.querySelector(".popup_opened");
+  closePopup(openedPopup);
+};
+
+//Функция закрытия попапов кликом на оверлей
+function closePopupWithOverlay(evt) {
+  if (evt.target === evt.currentTarget) {
+    closeOpenedPopup();
+  }
+};
+
+//Функция закрытия попапов на клавишу Esc
+function closePopupWithEscape(evt) {
+  if (evt.key === "Escape") {
+    closeOpenedPopup();
+  }
+};
 
 //отображение карточек
 initialCards.forEach((element) => {
@@ -92,7 +112,13 @@ function openPopupImage(event) {
   openPopup(popupImage);
 };
 
-
+//отпроаление данных на страницу
+function formSubmitHandlerProfile(event) {
+  event.preventDefault();
+  profName.textContent = nameInput.value;
+  profSubname.textContent = subnameInput.value;
+  closePopup(popupProfile);
+};
 
 //добавляем картоки
 function newElementSubmit(event) {

@@ -5,22 +5,7 @@
   padding: 0;
   border: none;
 }
-.popup__field::after{
-  content: " ";
-  border-bottom: 1px solid #545454;
-  width: 100%;
-  position: absolute;
-  bottom: 98px;
-  opacity: 0.2;
-}
-.popup__field::before{
-  content: " ";
-  border-bottom: 1px solid #545454;
-  position: absolute;
-  width: 100%;
-  bottom: 158px;
-  opacity: 0.2;
-}
+
 @media screen and (min-width: 319px) and (max-width: 690px){
   .popup__field::after{
     bottom: 91px;

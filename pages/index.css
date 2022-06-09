@@ -40,3 +40,5 @@
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__caption/popup__caption.css);
 @import url(../blocks/popup/__wraper/popup__wraper.css);
+@import url(../blocks/popup/__error/popup__error.css);
+@import url(../blocks/popup/__button-save/_disabled/popup__button-save_disabled.css);
