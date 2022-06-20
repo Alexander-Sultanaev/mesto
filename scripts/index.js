@@ -32,8 +32,10 @@ function openPopup(popup) {
 
 //попап профиля
 function openPopupProfile() {
-  nameInput.value = null;
-  subnameInput.value = null;
+  nameInput.value = profName.textContent;
+  subnameInput.value = profSubname.textContent;
+  enableValidation(setup);
+  deleteErrors(popupProfile, setup);
   openPopup(popupProfile);
 };
 
@@ -41,7 +43,8 @@ function openPopupProfile() {
 function openPopupCard() {
   cardNameInput.value = null;
   cardLinkInput.value = null;
-  switchSubmitButtonState(popupAddPlace, popupButtonSave);
+  enableValidation(setup);
+  deleteErrors(popupCard, setup);
   openPopup(popupCard);
 };
 
