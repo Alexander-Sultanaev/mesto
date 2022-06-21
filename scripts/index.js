@@ -34,7 +34,6 @@ function openPopup(popup) {
 function openPopupProfile() {
   nameInput.value = profName.textContent;
   subnameInput.value = profSubname.textContent;
-  enableValidation(setup);
   deleteErrors(popupProfile, setup);
   openPopup(popupProfile);
 };
@@ -43,7 +42,6 @@ function openPopupProfile() {
 function openPopupCard() {
   cardNameInput.value = null;
   cardLinkInput.value = null;
-  enableValidation(setup);
   deleteErrors(popupCard, setup);
   openPopup(popupCard);
 };
