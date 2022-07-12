@@ -26,16 +26,13 @@ export class Card {
   };
 
   _setEventlisteners() {
-    this._element.querySelector(".gallery__button-like")
-      .addEventListener("click", () => {
+    this._element.querySelector(".gallery__button-like").addEventListener("click", () => {
         this._likeCard();
       });
-    this._element.querySelector(".gallery__button-delete")
-      .addEventListener("click", () => {
+    this._element.querySelector(".gallery__button-delete").addEventListener("click", () => {
         this._deleteCard();
       });
-    this._element.querySelector(".gallery__image")
-      .addEventListener("click", () => {
+    this._element.querySelector(".gallery__image").addEventListener("click", () => {
         this._openImagePopup();
       });
   };
