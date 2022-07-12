@@ -1,4 +1,4 @@
-import {openPopup} from "./index.js"
+import {openPopup} from "./utils/utils.js"
 const popupCard = document.querySelector('.popup_type_image');
 const popupImage = popupCard.querySelector('.popup__image');
 const popupCaption = popupCard.querySelector('.popup__caption');
@@ -42,13 +42,14 @@ export class Card {
   };
 
   _deleteCard() {
-    this._element.remove()
+    this._element.remove();
+    this._element = null;
   };
 
   _openImagePopup() {
     popupImage.src = this._link;
+    popupImage.alt = this._name;
     popupCaption.textContent = this._name;
-    popupCaption.alt = this._name;
     openPopup(popupImage);
   };
 };

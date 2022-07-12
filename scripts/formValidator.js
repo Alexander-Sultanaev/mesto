@@ -7,6 +7,8 @@ class FormValidator {
     this._inactiveButtonClass = validationSettings.inactiveButtonClass;
     this._inputErrorClass = validationSettings.inputErrorClass;
     this._errorClass = validationSettings.errorClass;
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+    this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
   }
 
   //Функция добавления ошибки
@@ -59,13 +61,7 @@ class FormValidator {
     this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
-
-    this._inputList = Array.from(
-      this._formElement.querySelectorAll(this._inputSelector)
-    );
-    this._buttonElement = this._formElement.querySelector(
-      this._submitButtonSelector
-    );
+    
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
