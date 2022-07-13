@@ -1,5 +1,5 @@
 import { initialCards } from "../scripts/utils/contants.js";
-import { Card } from "../sscripts/Card.js";
+import { Card } from "../scripts/Card.js";
 import { FormValidator } from "../scripts/FormValidator.js";
 import { openPopup,closePopup, } from "../scripts/utils/utils.js";
 
