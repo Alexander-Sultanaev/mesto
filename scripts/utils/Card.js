@@ -1,5 +1,5 @@
-import {openPopup} from "./utils.js"
-import {popupImage, popupCaption, popupOpenImage} from "./contants.js";
+import {openPopup} from "../scripts/utils/utils.js"
+import {popupImage, popupCaption, popupOpenImage} from "../scripts/utils/contants.js";
 
 export class Card {
   constructor(data, cardSelector) {
@@ -7,7 +7,6 @@ export class Card {
     this._link = data.link;
     this._cardSelector = cardSelector;
   };
-
   _getTemplate() {
     const cardTemplate = document.querySelector(this._cardSelector).content.querySelector(".gallery__card").cloneNode(true);
     return cardTemplate;
@@ -50,4 +49,4 @@ export class Card {
     popupCaption.textContent = this._name;
     openPopup(popupOpenImage);
   };
-};
+}
