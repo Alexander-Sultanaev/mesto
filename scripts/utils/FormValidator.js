@@ -9,7 +9,7 @@ class FormValidator {
     this._errorClass = validationSettings.errorClass;
     this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-  }
+  };
 
   //Функция добавления ошибки
   _showInputError(inputElement) {
@@ -19,7 +19,7 @@ class FormValidator {
     inputElement.classList.add(this._inputErrorClass);
     errorInput.textContent = inputElement.validationMessage;
     errorInput.classList.add(this._errorClass);
-  }
+  };
 
   //Функция удаления ошибки
   _hideInputError(inputElement) {
@@ -29,12 +29,12 @@ class FormValidator {
     inputElement.classList.remove(this._inputErrorClass);
     errorInput.textContent = "";
     errorInput.classList.remove(this._errorClass);
-  }
+  };
 
   //Определение невалидного инпута
   _hasInvalidInput() {
     return this._inputList.some((inputElement) => !inputElement.validity.valid);
-  }
+  };
 
   //Функция, показывающая или скрывающая ошибку
   _isValid(inputElement) {
@@ -43,7 +43,7 @@ class FormValidator {
     } else {
       this._hideInputError(inputElement);
     }
-  }
+  };
 
   //Функция изменения состояния кнопки сабмита в попапах
   _toggleButtonState() {
@@ -54,7 +54,7 @@ class FormValidator {
       this._buttonElement.disabled = false;
       this._buttonElement.classList.remove(this._inactiveButtonClass);
     }
-  }
+  };
 
   //Функция добавления слушателей событий для всех инпутов, нахождения всех инпутов и сабмитов
   _setEventListeners() {
@@ -69,14 +69,14 @@ class FormValidator {
         this._toggleButtonState();
       });
     });
-  }
+  };
 
   deleteInputError() {
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
     this._toggleButtonState();
-  }
+  };
 
   //Функция включения валидации
   enableValidation() {
@@ -85,7 +85,6 @@ class FormValidator {
     });
 
     this._setEventListeners();
-  }
-}
-
+  };
+};
 export { FormValidator };
