@@ -1,7 +1,7 @@
-import {initialCards} from "./utils/contants.js";
-import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
-import { openPopup,closePopup, } from "./utils/utils.js";
+import {initialCards} from "../scripts/utils/contants.js";
+import { Card } from "../scripts/Card.js";
+import { FormValidator } from "../scripts/FormValidator.js";
+import { openPopup,closePopup, } from "../scripts/utils/utils.js";
 
 const buttonProfileOpen = document.querySelector('.profile__button-edit');
 const buttonCardOpen = document.querySelector('.profile__button-add');
