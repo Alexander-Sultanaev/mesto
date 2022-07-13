@@ -1,7 +1,5 @@
 import {openPopup} from "./utils/utils.js"
-const popupCard = document.querySelector('.popup_type_image');
-const popupImage = popupCard.querySelector('.popup__image');
-const popupCaption = popupCard.querySelector('.popup__caption');
+import {popupImage, popupCaption, popupOpenImage} from "./utils/contants.js";
 
 export class Card {
   constructor(data, cardSelector) {
@@ -50,6 +48,6 @@ export class Card {
     popupImage.src = this._link;
     popupImage.alt = this._name;
     popupCaption.textContent = this._name;
-    openPopup(popupImage);
+    openPopup(popupOpenImage);
   };
 };
