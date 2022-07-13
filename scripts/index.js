@@ -5,8 +5,6 @@ import { openPopup,closePopup, } from "./utils/utils.js";
 
 const buttonProfileOpen = document.querySelector('.profile__button-edit');
 const buttonCardOpen = document.querySelector('.profile__button-add');
-
-
 const profileName = document.querySelector('.profile__name');
 const profileSubname = document.querySelector('.profile__subname');
 const popupProfile = document.querySelector('.popup_type_profile');
