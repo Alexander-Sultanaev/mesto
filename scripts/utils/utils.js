@@ -1,6 +1,5 @@
+const buttonPopupClose = document.querySelectorAll('.popup__button-close');
 export function openPopup(popup) {
-  popup.addEventListener("mousedown", closePopupWithOverlay);
-  document.addEventListener("keydown", closePopupWithEscape);
   popup.classList.add("popup_opened");
 };
 export function closePopupWithEscape(evt) {
@@ -18,7 +17,11 @@ export function closeOpenedPopup() {
   closePopup(openedPopup);
 };
 export function closePopup(popup) {
-  popup.removeEventListener("mousedown", closePopupWithOverlay);
-  document.removeEventListener("keydown", closePopupWithEscape);
   popup.classList.remove("popup_opened");
 };
+buttonPopupClose.forEach((button) => {
+  const popup = button.closest(".popup");
+  button.addEventListener("click", () => closePopup(popup));
+  popup.addEventListener("mousedown", closePopupWithOverlay);
+  document.addEventListener("keydown", closePopupWithEscape);
+});
