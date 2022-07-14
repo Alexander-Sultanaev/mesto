@@ -28,3 +28,4 @@ export const popupCard = document.querySelector('.popup_type_image');
 export const popupImage = popupCard.querySelector('.popup__image');
 export const popupOpenImage = document.querySelector('.popup_type_image');
 export const popupCaption = popupCard.querySelector('.popup__caption');
+export const popups = document.querySelectorAll('.popup')

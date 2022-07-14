@@ -19,18 +19,26 @@ const cardLinkInput = popupCard.querySelector('.popup__input_type_link');
 
 //добавление карточек в разметку-----------------
 function createCard(item) {
-  const card = new Card(item, ".gallery__template");
-  const cardElement = card.generateCard();
-  renderCard(cardElement)
+  const newCard = new Card(item, '.gallery__template').generateCard();
+  return newCard
 };
 
-function renderCard(cardElement){
-  cardsList.prepend(cardElement);
+function renderCard(item){
+  cardsList.prepend(item);
 };
 
-initialCards.forEach((element) => {
-  createCard(element);
+initialCards.forEach((item) => {
+  const newCard = createCard(item);
+  renderCard(newCard);
 });
+//добавляем картоки
+function newElementSubmit(event) {
+  event.preventDefault();
+  const cardsItem = { name: cardNameInput.value, link: cardLinkInput.value };
+  const newCard = createCard(cardsItem);
+  renderCard(newCard, true);
+  closePopup(popupCard);
+};
 //валидация форм-------------
 const validationSettings  = {
   formSelector: ".popup__form",
@@ -46,9 +54,7 @@ addProfileValidator.enableValidation();
 
 const editProfileValidator = new FormValidator(validationSettings, popupProfile);
 editProfileValidator.enableValidation();
-
 //работа с попапами-------------------------
-
 //попап профиля
 function openPopupProfile() {
   nameInput.value = profileName.textContent;
@@ -63,21 +69,12 @@ function openPopupCard() {
   addProfileValidator.deleteInputError();
   openPopup(popupCard);
 };
-//закрытие всех попапов 
-
 
 function formSubmitHandlerProfile(event) {
   event.preventDefault();
   profileName.textContent = nameInput.value;
   profileSubname.textContent = subnameInput.value;
   closePopup(popupProfile);
-};
-//добавляем картоки
-function newElementSubmit(event) {
-  event.preventDefault();
-  const newCard = { name: cardNameInput.value, link: cardLinkInput.value };
-  createCard(newCard);
-  closePopup(popupCard);
 };
 //слушатели событий ------------------------------
 buttonCardOpen.addEventListener('click',openPopupCard);
