@@ -29,3 +29,12 @@ export const popupImage = popupCard.querySelector('.popup__image');
 export const popupOpenImage = document.querySelector('.popup_type_image');
 export const popupCaption = popupCard.querySelector('.popup__caption');
 export const popups = document.querySelectorAll('.popup')
+
+export const validationSettings  = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button-save",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__input-error_active",
+};

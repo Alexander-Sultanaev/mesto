@@ -1,6 +1,6 @@
-import { initialCards } from "../scripts/utils/contants.js";
-import { Card } from "../scripts/Card.js";
-import { FormValidator } from "../scripts/FormValidator.js";
+import { initialCards, validationSettings } from "../scripts/utils/contants.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
 import { openPopup,closePopup, } from "../scripts/utils/utils.js";
 
 const buttonProfileOpen = document.querySelector('.profile__button-edit');
@@ -40,14 +40,7 @@ function newElementSubmit(event) {
   closePopup(popupCard);
 };
 //валидация форм-------------
-const validationSettings  = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button-save",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__input-error_active",
-};
+
 
 const addProfileValidator = new FormValidator(validationSettings, popupCard);
 addProfileValidator.enableValidation();
