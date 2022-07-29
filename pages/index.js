@@ -3,6 +3,11 @@ import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { openPopup,closePopup, } from "../scripts/utils/utils.js";
 
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js"
+
 const buttonProfileOpen = document.querySelector('.profile__button-edit');
 const buttonCardOpen = document.querySelector('.profile__button-add');
 const profileName = document.querySelector('.profile__name');
@@ -52,14 +57,14 @@ editProfileValidator.enableValidation();
 function openPopupProfile() {
   nameInput.value = profileName.textContent;
   subnameInput.value = profileSubname.textContent;
-  editProfileValidator.deleteInputError();
+  editProfileValidator.resetFormValidation();
   openPopup(popupProfile);
 };
 //открытие попапа карточки
 function openPopupCard() {
   cardNameInput.value = null;
   cardLinkInput.value = null;
-  addProfileValidator.deleteInputError();
+  addProfileValidator.resetFormValidation();
   openPopup(popupCard);
 };
 
