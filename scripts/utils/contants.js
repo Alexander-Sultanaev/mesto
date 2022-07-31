@@ -2,6 +2,12 @@ export const popups = document.querySelectorAll('.popup')
 export const popupOpenImage = document.querySelector('.popup_type_image');
 export const popupImage = popupOpenImage.querySelector('.popup__image');
 export const popupCaption = popupOpenImage.querySelector('.popup__caption');
+export const buttonProfileOpen = document.querySelector('.profile__button-edit');
+export const buttonCardOpen = document.querySelector('.profile__button-add');
+export const profileName = document.querySelector('.profile__name');
+export const profileSubname = document.querySelector('.profile__subname');
+export const profilePopup = document.querySelector('.popup_type_profile')
+export const profileForm = profilePopup.querySelector('.popup__form_type_profile');
 
 
 export const initialCards = [

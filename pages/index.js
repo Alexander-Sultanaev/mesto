@@ -16,26 +16,31 @@ const popupProfile = document.querySelector('.popup_type_profile');
 const formElementProfile = popupProfile.querySelector('.popup__form_type_profile');
 const nameInput = popupProfile.querySelector('.popup__input_type_name');
 const subnameInput = popupProfile.querySelector('.popup__input_type_subname');
-const cardsList = document.querySelector('.gallery__list');
 const popupCard = document.querySelector('.popup_type_card');
 const formElementCard = document.querySelector('.popup__form_type_card');
 const cardNameInput = popupCard.querySelector('.popup__input_type_title');
 const cardLinkInput = popupCard.querySelector('.popup__input_type_link');
 
-//добавление карточек в разметку-----------------
+
+const userInfo = new UserInfo({
+  name: profileName,
+  subname: profileSubname
+});
+
+const сardList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const newCard = createCard(item);
+    сardList.addItem(newCard);
+  }
+}, '.gallery__list');
+сardList.renderer();
+
 function createCard(item) {
   const newCard = new Card(item, '.gallery__template').generateCard();
   return newCard
 };
 
-function renderCard(item){
-  cardsList.prepend(item);
-};
-
-initialCards.forEach((item) => {
-  const newCard = createCard(item);
-  renderCard(newCard);
-});
 //добавляем картоки
 function newElementSubmit(event) {
   event.preventDefault();
