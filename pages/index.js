@@ -1,7 +1,7 @@
 import { initialCards, validationSettings } from "../scripts/utils/contants.js";
-import { Card } from "../components/Card.js";
+import Card from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
-import { openPopup,closePopup, } from "../scripts/utils/utils.js";
+
 
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
@@ -41,6 +41,28 @@ function createCard(item) {
   return newCard
 };
 
+const bigImagePopup = new PopupWithImage("#openimage");
+function bigImage({ link, name }) {
+  bigImagePopup.open(
+    {name,link}
+  );
+};
+bigImagePopup.setEventListeners();
+
+const addProfileValidator = new FormValidator(validationSettings, popupCard);
+addProfileValidator.enableValidation();
+
+const editProfileValidator = new FormValidator(validationSettings, popupProfile);
+editProfileValidator.enableValidation();
+
+
+/*openImagePopup() {
+  popupImage.src = this._link;
+  popupImage.alt = this._name;
+  popupCaption.textContent = this._name;
+  openPopup(popupOpenImage);
+};*/
+/*
 //добавляем картоки
 function newElementSubmit(event) {
   event.preventDefault();
@@ -52,11 +74,7 @@ function newElementSubmit(event) {
 //валидация форм-------------
 
 
-const addProfileValidator = new FormValidator(validationSettings, popupCard);
-addProfileValidator.enableValidation();
 
-const editProfileValidator = new FormValidator(validationSettings, popupProfile);
-editProfileValidator.enableValidation();
 //работа с попапами-------------------------
 //попап профиля
 function openPopupProfile() {
@@ -83,4 +101,4 @@ function formSubmitHandlerProfile(event) {
 buttonCardOpen.addEventListener('click',openPopupCard);
 buttonProfileOpen.addEventListener('click', openPopupProfile);
 formElementCard.addEventListener('submit', newElementSubmit);
-formElementProfile.addEventListener('submit', formSubmitHandlerProfile);
+formElementProfile.addEventListener('submit', formSubmitHandlerProfile);*/

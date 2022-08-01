@@ -1,26 +1,37 @@
-import {openPopup} from "../scripts/utils/utils.js"
-import {popupImage, popupCaption, popupOpenImage} from "../scripts/utils/contants.js";
-
-export class Card {
-  constructor(data, cardSelector) {
-    this._name = data.name;
-    this._link = data.link;
+export default class Card {
+  constructor({ name, link, handleCardClick }, cardSelector) {
     this._cardSelector = cardSelector;
-  };
+    this._name = name;
+    this._link = link;
+    this._handleCardClick = handleCardClick;
+  }
+
   _getTemplate() {
-    const cardTemplate = document.querySelector(this._cardSelector).content.querySelector(".gallery__card").cloneNode(true);
-    return cardTemplate;
-  };
+    return document
+      .querySelector(this._cardSelector)
+      .content.querySelector(".gallery__card")
+      .cloneNode(true);
+  }
 
   generateCard() {
     this._element = this._getTemplate();
-    this._setEventlisteners();
     this._elementImage = this._element.querySelector(".gallery__image");
-    this._element.querySelector(".gallery__title").textContent = this._name;
     this._elementImage.src = this._link;
     this._elementImage.alt = this._name;
+    this._element.querySelector(".gallery__title").textContent = this._name;
+    this._setEventlisteners();
+
     return this._element;
-  };
+  }
+
+  _likeCard() {
+    this._element.querySelector(".gallery__button-like").classList.toggle("gallery__button-like_active");
+  }
+
+  _deleteCard() {
+    this._element.remove();
+    this._element = null;
+  }
 
   _setEventlisteners() {
     this._element.querySelector(".gallery__button-like").addEventListener("click", () => {
@@ -30,23 +41,10 @@ export class Card {
         this._deleteCard();
       });
     this._element.querySelector(".gallery__image").addEventListener("click", () => {
-        this._openImagePopup();
+      this._handleCardClick ({
+        link: this._link,
+        name: this._name
       });
-  };
-
-  _likeCard() {
-    this._element.querySelector(".gallery__button-like").classList.toggle("gallery__button-like_active")
-  };
-
-  _deleteCard() {
-    this._element.remove();
-    this._element = null;
-  };
-
-  _openImagePopup() {
-    popupImage.src = this._link;
-    popupImage.alt = this._name;
-    popupCaption.textContent = this._name;
-    openPopup(popupOpenImage);
-  };
+      });
+  }
 }
