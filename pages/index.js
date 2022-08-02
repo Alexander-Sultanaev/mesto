@@ -22,32 +22,35 @@ const cardNameInput = popupCard.querySelector('.popup__input_type_title');
 const cardLinkInput = popupCard.querySelector('.popup__input_type_link');
 
 
-const userInfo = new UserInfo({
-  name: profileName,
-  subname: profileSubname
-});
 
-const сardList = new Section({
+
+const createCard = (data) => {
+  const card = new Card({
+    data: data,
+    handleCardClick: (name, link) => {
+      viewImagePopup.open(name, link);
+    }}, '.gallery__template');
+  const cardElement = card.generateCard();
+  return cardElement;
+};
+
+const cardsList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const newCard = createCard(item);
-    сardList.addItem(newCard);
-  }
+    cardsList.addItem(createCard(item));
+  },
 }, '.gallery__list');
-сardList.renderer();
+cardsList.renderItems();
 
+
+/*
 function createCard(item) {
   const newCard = new Card(item, '.gallery__template').generateCard();
   return newCard
-};
+};*/
 
-const bigImagePopup = new PopupWithImage("#openimage");
-function bigImage({ link, name }) {
-  bigImagePopup.open(
-    {name,link}
-  );
-};
-bigImagePopup.setEventListeners();
+const viewImagePopup = new PopupWithImage('.popup_type_image');
+viewImagePopup.setEventListeners();
 
 const addProfileValidator = new FormValidator(validationSettings, popupCard);
 addProfileValidator.enableValidation();
