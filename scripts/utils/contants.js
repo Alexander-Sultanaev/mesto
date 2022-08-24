@@ -2,13 +2,21 @@ export const popups = document.querySelectorAll('.popup')
 export const popupOpenImage = document.querySelector('.popup_type_image');
 export const popupImage = popupOpenImage.querySelector('.popup__image');
 export const popupCaption = popupOpenImage.querySelector('.popup__caption');
+
 export const buttonProfileOpen = document.querySelector('.profile__button-edit');
 export const buttonCardOpen = document.querySelector('.profile__button-add');
-export const profileName = document.querySelector('.profile__name');
-export const profileSubname = document.querySelector('.profile__subname');
-export const profilePopup = document.querySelector('.popup_type_profile')
-export const profileForm = profilePopup.querySelector('.popup__form_type_profile');
 
+export const popupCard = document.querySelector('.popup_type_card');
+export const cardNameInput = popupCard.querySelector('.popup__input_type_title');
+export const cardLinkInput = popupCard.querySelector('.popup__input_type_link');
+
+export const template = document.querySelector('.gallery__template').content;
+export const imgUrl = document.querySelector('.popup__image');
+export const imgName = document.querySelector('.popup__caption');
+
+export const popupProfile = document.querySelector('.popup_type_profile');
+export const nameInput = popupProfile.querySelector('.popup__input_type_name');
+export const subnameInput = popupProfile.querySelector('.popup__input_type_subname');
 
 export const initialCards = [
   {

@@ -1,17 +1,19 @@
-export default class UserInfo {
-  constructor(data){
-    this._name = data.name
-    this._subname = data.subname
+export class UserInfo {
+  constructor({ name: nameUser, info: infoUser }) {
+    this._nameUser = document.querySelector(nameUser)
+    this._infoUser = document.querySelector(infoUser)
   }
-  getUserInfo(){
-    const userInfo = {
-      nameInput: this._name.texContent,
-      subnameInput: this._subname.texContent
+
+  getUserInfo() {
+    const dataUser = {
+      name: this._nameUser.textContent,
+      info: this._infoUser.textContent,
     }
-    return userInfo
+    return dataUser
   }
-  setUserInfo(data){
-    this._name.texContent = data.nameInput;
-    this._subname.texContent = data.subnameInput;
+
+  setUserInfo({ name, info }) {
+    this._nameUser.textContent = name
+    this._infoUser.textContent = info
   }
 }
