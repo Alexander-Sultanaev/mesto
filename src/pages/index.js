@@ -1,3 +1,4 @@
+import '../pages/index.css';
 import { initialCards, validationSettings, template, imgName, imgUrl, buttonProfileOpen, buttonCardOpen, nameInput, subnameInput, popupProfile, popupCard, cardNameInput, cardLinkInput } from "../scripts/utils/contants.js";
 import Card from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
