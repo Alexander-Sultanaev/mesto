@@ -63,9 +63,10 @@ const popupProfileEdit = new PopupWithForm({
 function openPopupProfile(){
   popupProfileEdit.open()
   const newUserData = userData.getUserInfo()
+  //popupProfileEdit.setInputValues(newUserData) попробовал разные варианты, не получается передать в инпуты знаения с странцы. Изучу материал лучше и постараюсь исправить к ПР9.
   nameInput.value = newUserData.name;
   subnameInput.value = newUserData.info;
-  editProfileValidator.resetFormValidation
+  editProfileValidator.resetFormValidation();
 }
 buttonProfileOpen.addEventListener('click', () => openPopupProfile());
 popupProfileEdit.setEventListeners()
