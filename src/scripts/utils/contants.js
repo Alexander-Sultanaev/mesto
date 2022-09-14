@@ -5,6 +5,7 @@ export const popupCaption = popupOpenImage.querySelector('.popup__caption');
 
 export const buttonProfileOpen = document.querySelector('.profile__button-edit');
 export const buttonCardOpen = document.querySelector('.profile__button-add');
+export const buttonAvatarOpen = document.querySelector('.profile__image');
 
 export const popupCard = document.querySelector('.popup_type_card');
 export const cardNameInput = popupCard.querySelector('.popup__input_type_title');
@@ -17,6 +18,8 @@ export const imgName = document.querySelector('.popup__caption');
 export const popupProfile = document.querySelector('.popup_type_profile');
 export const nameInput = popupProfile.querySelector('.popup__input_type_name');
 export const subnameInput = popupProfile.querySelector('.popup__input_type_subname');
+
+export const popupAvatar = document.querySelector('.popup_type_avatar');
 
 export const initialCards = [
   {

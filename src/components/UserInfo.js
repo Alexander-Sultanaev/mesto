@@ -6,14 +6,14 @@ export class UserInfo {
 
   getUserInfo() {
     const dataUser = {
-      name: this._nameUser.textContent,
-      info: this._infoUser.textContent,
+      nameInput: this._nameUser.textContent,
+      subnameInput: this._infoUser.textContent,
     }
     return dataUser
   }
 
-  setUserInfo({ name, info }) {
-    this._nameUser.textContent = name
-    this._infoUser.textContent = info
+  setUserInfo(data) {
+    this._nameUser.textContent = data.nameInput
+    this._infoUser.textContent = data.subnameInput
   }
 }
