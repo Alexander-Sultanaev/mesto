@@ -19,8 +19,11 @@
 .gallery__title{font-size:24px;font-weight:900;line-height:29px;margin:0;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .gallery__wraper{align-items:center;display:flex;flex-direction:row;justify-content:space-between;padding:25px 20px 30px}
 .gallery__button-like{background:#fff url(images/gallery__like.1ad06e85f169668a1f36.svg) 50%/cover no-repeat;border:none;cursor:pointer;height:20px;width:23px}.gallery__button-like:hover{opacity:.5}.gallery__button-like:active{background:#fff url(images/gallery__like-active.35948469632d0421d697.svg) 50%/cover no-repeat;opacity:1;transition:all .2s ease-in-out}
-.gallery__button-delete{background:transparent url(images/gallery__like_delete.ce3b64935accf9b8212e.svg)50%/cover no-repeat;border:none;cursor:pointer;height:19px;overflow:hidden;position:absolute;right:20px;top:20px;width:18px}.gallery__button-delete:hover{opacity:.6}
+.gallery__button-delete{background:transparent url(images/gallery__like_delete.ce3b64935accf9b8212e.svg)50%/cover no-repeat;border:none;cursor:pointer;display:none;height:19px;overflow:hidden;position:absolute;right:20px;top:20px;width:18px}.gallery__button-delete:hover{opacity:.6}
+.gallery__button-delete_visible{display:block}
 .gallery__button-like_active{background:url(images/gallery__like-active.35948469632d0421d697.svg)no-repeat}
+.gallery__container{flex-direction:column}
+.gallery__heart-count{display:block;font-size:13px;font-weight:400;line-height:16px;padding-top:3px;text-align:center}
 .footer{margin:0 auto;max-width:880px;padding:67px 0 60px}@media screen and (min-width:319px) and (max-width:690px){.footer{max-width:282px;padding:48px 0 36px}}
 .footer__copyright{color:#545454;font-size:18px;font-weight:400;line-height:22px;margin:0}@media screen and (min-width:319px) and (max-width:690px){.footer__copyright{font-size:14px;line-height:17px}}
 .popup{align-items:center;background:rgba(0,0,0,.6);display:flex;flex-direction:column;height:100%;justify-content:center;left:0;opacity:0;position:fixed;top:0;transition:visibility .3s,opacity .3s linear;visibility:hidden;width:100%}
