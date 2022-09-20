@@ -87,6 +87,7 @@ const popupAvatarEdit = new PopupWithForm({
 })
 function openPopupAvatar(){
   popupAvatarEdit.open()
+  editAvatarValidator.resetFormValidation()
 }
 buttonAvatarOpen.addEventListener('click', () => openPopupAvatar());
 popupAvatarEdit.setEventListeners();
