@@ -1,7 +1,7 @@
 import '../pages/index.css';
 import { initialCards, validationSettings, template, imgName, imgUrl, buttonProfileOpen, 
 buttonCardOpen, buttonAvatarOpen, popupAvatar, popupProfile,
-popupCard, popupDeleteCard, cardNameInput, cardLinkInput, avatar} from "../scripts/utils/contants.js";
+popupCard, cardNameInput, cardLinkInput, avatar} from "../scripts/utils/contants.js";
 import Card from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
@@ -71,7 +71,6 @@ popupProfileEdit.setEventListeners()
 const popupAvatarEdit = new PopupWithForm({
   selectorPopup: '.popup_type_avatar',
   functionPopupForm: (data) => {
-    //avatar.src = data.avatar;
     popupAvatarEdit.loading(true);
     api.editUserAvatar(data)
       .then((data) => {
@@ -93,9 +92,6 @@ buttonAvatarOpen.addEventListener('click', () => openPopupAvatar());
 popupAvatarEdit.setEventListeners();
 ///////
 
-
-
-
 // константа класса реализации карточки в DOM
 const cardSection = new Section({ 
   renderer: (item) => { 
@@ -105,8 +101,8 @@ const cardSection = new Section({
   },  
   '.gallery__list')
 
+const popupDeletion = new PopupWithForm({selectorPopup: '.popup_type_delete-card'})
 
-/*
   function cardCreate(item) { 
     const cardItem = new Card(
       item, 
@@ -114,7 +110,7 @@ const cardSection = new Section({
       handleCardClick,
       (cardId) => {
         popupDeletion.open()
-        popupDeletion.changeSubmitHandler(() => {
+        popupDeletion.delitSubmit(() => {
           api.deleteCard(cardId)
             .then(() => {
               cardItem.deleteCard()
@@ -141,7 +137,7 @@ const cardSection = new Section({
       userId,
       ) 
     return cardItem
-  }*/
+  }
 const popupCardImg = new PopupWithImage({ selectorPopup: '.popup_type_image' }, imgUrl, imgName) 
 
 function handleCardClick(name, link) {
@@ -152,7 +148,19 @@ popupCardImg.setEventListeners()
 const popupCardAdd = new PopupWithForm({  
   selectorPopup: '.popup_type_card', 
   functionPopupForm: (data) => { 
-    cardSection.addItem(cardCreate({ name: data['placeName'], link: data['placeLink'] }))
+    popupCardAdd.loading(true);
+    api.addCar(data)
+      .then((data) =>{
+        const card = cardCreate(data).createCard()
+        cardSection.addItem(card)
+        popupCardAdd.close()
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`)
+      })
+      .finally(() => {
+        popupCardAdd.loading(false)
+      })
   } 
 })
 function openPopupCard() {
@@ -163,4 +171,5 @@ function openPopupCard() {
 }
 buttonCardOpen.addEventListener('click', () => openPopupCard()); // открывает popup добавления места
 popupCardAdd.setEventListeners()
+popupDeletion.setEventListeners()
 //////////
