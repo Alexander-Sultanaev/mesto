@@ -20,6 +20,9 @@ export const nameInput = popupProfile.querySelector('.popup__input_type_name');
 export const subnameInput = popupProfile.querySelector('.popup__input_type_subname');
 
 export const popupAvatar = document.querySelector('.popup_type_avatar');
+export const avatar = document.querySelector('.profile__image');
+
+export const popupDeleteCard = document.querySelector('.popup_type_delete-card');
 
 export const initialCards = [
   {

@@ -15,4 +15,7 @@ export class Section {
   addItem(element) {
     this._container.prepend(element); //.append(element);
   }
+  addItemOnServer(element) {
+    this._container.append(element)
+  }
 }

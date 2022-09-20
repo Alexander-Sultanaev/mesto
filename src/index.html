@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--<link rel="stylesheet" href="../src/pages/index.css">-->
   <title>Место</title>
 </head>
 <body>
@@ -14,7 +13,6 @@
     </header>
     <main class="main">
       <section class="profile">
-        <!--<img src="./images/profile/profile__image.jpg" alt="Аватар профиля" class="profile__image"-->
         <div class="profile__button-avatar"><img src="<%=require('./images/profile/profile__image.jpg')%>" alt="Аватар профиля" class="profile__image"></div>
         <div class="profile__content">
           <div class="profile__info">
@@ -41,9 +39,9 @@
           <h3 class="popup__title">Редактировать профиль</h3>
           <form name="popup__edit-profile" class="popup__form popup__form_type_profile" novalidate>
             <fieldset class="popup__field">
-              <input id="name-input" name="nameInput" type="text" class="popup__input popup__input_type_name" placeholder="Имя" required minlength="2" maxlength="40">
+              <input id="name-input" name="name" type="text" class="popup__input popup__input_type_name" placeholder="Имя" required minlength="2" maxlength="40">
               <span class="popup__input-error" id="name-input-error"></span>
-              <input id="subname-input" name="subnameInput" type="text" class="popup__input popup__input_type_subname" placeholder="Занятие" required minlength="2" maxlength="200">
+              <input id="subname-input" name="about" type="text" class="popup__input popup__input_type_subname" placeholder="Занятие" required minlength="2" maxlength="200">
               <span class="popup__input-error" id="subname-input-error"></span>
               <button type="submit" class="popup__button-save popup__button-save_profile">Сохранить</button>
             </fieldset>
@@ -73,7 +71,7 @@
           <h3 class="popup__title">Обновить аватар</h3>
           <form name="popup__edit-avatar" class="popup__form popup__form_type_avatar" novalidate>
             <fieldset class="popup__field form__set">
-              <input id="avatar-link" name="profile-avatar" type="url" class="popup__input popup__input_type_avatar" placeholder="Ссылка на аватар" required>
+              <input id="avatar-link" name="avatar" type="url" class="popup__input popup__input_type_avatar" placeholder="Ссылка на аватар" required>
               <span class="popup__input-error avatar-input-error" id="avatar-link-error"></span>
               <button type="submit" class="popup__button-save popup__button-save_avatar">Сохранить</button>
             </fieldset>
@@ -89,18 +87,17 @@
           <button type="button" class="popup__button-close"></button>
         </div>
       </section>
-      <!--Попап подтверждения удаления карточек
-      <section class="popup popup_type_delete">
+      <!--Попап удаления карточек--> 
+      <section class="popup popup_type_delete-card">
         <div class="popup__container">
           <h3 class="popup__title">Вы уверены?</h3>
-          <form name="popup__delete-card" class="popup__form popup__form_type_delete">
-            <fieldset class="popup__field form__set">
-              <button type="button" class="popup__button-save popup__button-deleter">Да</button>
-            </fieldset>
+          <form name="delete-form" class="popup__form popup__form_type_delete">
+            <button type="button" class="popup__button-save popup__button-deleter">Да</button>
           </form>
           <button type="button" class="popup__button-close"></button>
         </div>
-      </section>-->
+      </section>
+
     </main>
     <template class="gallery__template">
       <li class="gallery__card">
@@ -108,11 +105,13 @@
         <button type="button" class="gallery__button-delete"></button>
         <div class="gallery__wraper">
           <h2 class="gallery__title"></h2>
-          <button type="button" class="gallery__button-like"></button>
+          <div class="gallery__container">
+            <button type="button" class="gallery__button-like"></button>
+            <span class="gallery__heart-count"></span>
+          </div>
         </div>
       </li>
     </template>
   </div>
-  <!--<script type="modyle" src="../src/pages/index.js"></script>-->
 </body>
 </html>

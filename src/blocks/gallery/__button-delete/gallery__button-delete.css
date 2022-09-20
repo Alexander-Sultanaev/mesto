@@ -8,6 +8,7 @@
   top: 20px;
   right: 20px;
   cursor: pointer;
+  display: none;
 }
 
 .gallery__button-delete:hover{
