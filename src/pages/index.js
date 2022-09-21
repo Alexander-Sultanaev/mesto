@@ -1,5 +1,5 @@
 import '../pages/index.css';
-import { initialCards, validationSettings, template, imgName, imgUrl, buttonProfileOpen, 
+import { validationSettings, template, imgName, imgUrl, buttonProfileOpen, 
 buttonCardOpen, buttonAvatarOpen, popupAvatar, popupProfile,
 popupCard, cardNameInput, cardLinkInput, avatar} from "../scripts/utils/contants.js";
 import Card from "../components/Card.js";
@@ -9,14 +9,16 @@ import { UserInfo } from "../components/UserInfo.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { Api } from '../components/Api.js';
-const addProfileValidator = new FormValidator(validationSettings, popupCard);
-addProfileValidator.enableValidation();
+import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 
-const editProfileValidator = new FormValidator(validationSettings, popupProfile);
-editProfileValidator.enableValidation();
+const cardPopupValidation = new FormValidator(validationSettings, popupCard);
+cardPopupValidation.enableValidation();
 
-const editAvatarValidator = new FormValidator(validationSettings, popupAvatar);
-editAvatarValidator.enableValidation();
+const profilePopupValidation = new FormValidator(validationSettings, popupProfile);
+profilePopupValidation.enableValidation();
+
+const avatarPopupValidation = new FormValidator(validationSettings, popupAvatar);
+avatarPopupValidation.enableValidation();
 /////
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-50',
@@ -27,13 +29,10 @@ const api = new Api({
 })
 let userId
 Promise.all([api.getInitialCards(), api.getUserInfo()])
-  .then(([initialCards, user]) => {
+  .then(([cards, user]) => {
     userId = user._id;
     userData.setUserInfo(user);
-    initialCards.forEach((item) => {
-      const card = cardCreate(item).createCard()
-      cardSection.addItemOnServer(card)
-    })
+    cardSection.renderItems(cards)
   })
   .catch((err) =>{
     console.log(`Ошибка: ${err}`)
@@ -63,7 +62,7 @@ function openPopupProfile(){
   popupProfileEdit.open()
   const newUserData = userData.getUserInfo()
   popupProfileEdit.setInputValues(newUserData);
-  editProfileValidator.resetFormValidation();
+  profilePopupValidation.resetFormValidation();
 }
 buttonProfileOpen.addEventListener('click', () => openPopupProfile());
 popupProfileEdit.setEventListeners()
@@ -87,7 +86,7 @@ const popupAvatarEdit = new PopupWithForm({
 })
 function openPopupAvatar(){
   popupAvatarEdit.open()
-  editAvatarValidator.resetFormValidation()
+  avatarPopupValidation.resetFormValidation()
 }
 buttonAvatarOpen.addEventListener('click', () => openPopupAvatar());
 popupAvatarEdit.setEventListeners();
@@ -95,14 +94,13 @@ popupAvatarEdit.setEventListeners();
 
 // константа класса реализации карточки в DOM
 const cardSection = new Section({ 
-  renderer: (item) => { 
-    const card = cardCreate(item)
-    return card
+  renderer: (card) => { 
+    cardSection.addItemOnServer(cardCreate(card))
     }, 
   },  
   '.gallery__list')
 
-const popupDeletion = new PopupWithForm({selectorPopup: '.popup_type_delete-card'})
+const popupDeletion = new PopupWithConfirmation({selectorPopup: '.popup_type_delete-card'})
 
   function cardCreate(item) { 
     const cardItem = new Card(
@@ -111,7 +109,7 @@ const popupDeletion = new PopupWithForm({selectorPopup: '.popup_type_delete-card
       handleCardClick,
       (cardId) => {
         popupDeletion.open()
-        popupDeletion.delitSubmit(() => {
+        popupDeletion.submitCallback(() => {
           api.deleteCard(cardId)
             .then(() => {
               cardItem.deleteCard()
@@ -136,10 +134,11 @@ const popupDeletion = new PopupWithForm({selectorPopup: '.popup_type_delete-card
         }
       },
       userId,
-      ) 
-    return cardItem
+      )
+    const cardElement = cardItem.createCard()
+    return cardElement
   }
-const popupCardImg = new PopupWithImage({ selectorPopup: '.popup_type_image' }, imgUrl, imgName) 
+const popupCardImg = new PopupWithImage({ selectorPopup: '.popup_type_image' }) 
 
 function handleCardClick(name, link) {
   popupCardImg.open(name, link);
@@ -152,8 +151,7 @@ const popupCardAdd = new PopupWithForm({
     popupCardAdd.loading(true);
     api.addCar(data)
       .then((data) =>{
-        const card = cardCreate(data).createCard()
-        cardSection.addItem(card)
+        cardSection.addItem(cardCreate(data))
         popupCardAdd.close()
       })
       .catch((err) => {
@@ -166,9 +164,7 @@ const popupCardAdd = new PopupWithForm({
 })
 function openPopupCard() {
   popupCardAdd.open()
-  cardNameInput.value = ''
-  cardLinkInput.value = ''
-  addProfileValidator.resetFormValidation();
+  cardPopupValidation.resetFormValidation();
 }
 buttonCardOpen.addEventListener('click', () => openPopupCard()); // открывает popup добавления места
 popupCardAdd.setEventListeners()

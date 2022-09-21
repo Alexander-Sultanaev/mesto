@@ -58,10 +58,6 @@ class FormValidator {
 
   //Функция добавления слушателей событий для всех инпутов, нахождения всех инпутов и сабмитов
   _setEventListeners() {
-    this._formElement.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-    });
-    
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {

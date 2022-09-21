@@ -2,18 +2,21 @@ export default class Card {
   constructor(elementCard, templateCard, functionCardClick, openPopupDeleteCard, handelLikeClick, userId) {
     this._elementCardName = elementCard.name
     this._elementCardLink = elementCard.link
-    this._templateCard = templateCard.querySelector('.gallery__card')
-    this._functionCardClick = functionCardClick
-    this._elementCardCountLikes = elementCard.likes
     this._elementCardId = elementCard._id
     this._elementCardUserId = elementCard.owner._id
-    this._userId = userId
+
+    this._templateCard = templateCard
+
+    this._functionCardClick = functionCardClick
+    this._elementCardCountLikes = elementCard.likes
     this._openPopupDeleteCard = openPopupDeleteCard
     this._handelLikeClick = handelLikeClick
+
+    this._userId = userId
   }
 
   _createView() {
-    this._templateView = this._templateCard.cloneNode(true) //склонировали то что внутри карточки
+    this._templateView = this._templateCard.querySelector('.gallery__card').cloneNode(true)
   }
 
   deleteCard() {
@@ -26,19 +29,6 @@ export default class Card {
     return isLikeUser
   }
 
-  setLikes(countLikes) {
-    this._cardLiked = this._templateView.querySelector('.gallery__button-like')
-    this._elementCardCountLikes = countLikes
-    this._countLikes = this._templateView.querySelector('.gallery__heart-count')
-    this._countLikes.textContent = this._elementCardCountLikes.length
-
-    this._cardLikedActive = 'gallery__button-like_active'
-    if (this.isLike()) {
-      this._cardLiked.classList.add(this._cardLikedActive)
-    } else {
-      this._cardLiked.classList.remove(this._cardLikedActive)
-    }
-  }
 
   _addEventListeners() {
     this._cardLiked.addEventListener('click', () => this._handelLikeClick(this._elementCardId))
@@ -48,12 +38,12 @@ export default class Card {
 
   createCard() {
     this._createView()
-    this.setLikes(this._elementCardCountLikes)
-
+    this.setLikes(this._elementCardCountLikes , this._cardLiked)
+    
     this._cardRemove = this._templateView.querySelector('.gallery__button-delete')
     this._cardTitle = this._templateView.querySelector('.gallery__title')
     this._cardImg = this._templateView.querySelector('.gallery__image')
-
+    
     this._cardTitle.textContent = this._elementCardName
     this._cardImg.src = this._elementCardLink
     this._cardImg.alt = this._elementCardName
@@ -63,6 +53,22 @@ export default class Card {
     }
 
     this._addEventListeners()
+    
     return this._templateView
+  }
+  
+  addLikes() {
+    this._cardLiked = this._templateView.querySelector('.gallery__button-like')//не получается обьявить его раньше, попробовал разные методы
+    if (this.isLike()) {
+      this._cardLiked.classList.add('gallery__button-like_active')
+    } else {
+      this._cardLiked.classList.remove('gallery__button-like_active')
+    }
+  }
+  setLikes(countLikes) {
+    this._elementCardCountLikes = countLikes
+    this._countLikes = this._templateView.querySelector('.gallery__heart-count')
+    this._countLikes.textContent = this._elementCardCountLikes.length
+    this.addLikes()
   }
 }
