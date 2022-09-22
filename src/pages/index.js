@@ -1,7 +1,7 @@
 import '../pages/index.css';
-import { validationSettings, template, imgName, imgUrl, buttonProfileOpen, 
+import { validationSettings, template, buttonProfileOpen, 
 buttonCardOpen, buttonAvatarOpen, popupAvatar, popupProfile,
-popupCard, cardNameInput, cardLinkInput, avatar} from "../scripts/utils/contants.js";
+popupCard } from "../scripts/contants.js";
 import Card from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
@@ -73,7 +73,7 @@ const popupAvatarEdit = new PopupWithForm({
     popupAvatarEdit.loading(true);
     api.editUserAvatar(data)
       .then((data) => {
-        avatar.src = data.avatar;
+        userData.setUserInfo(data);
         popupAvatarEdit.close();
       })
       .catch((err) => {

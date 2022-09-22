@@ -8,9 +8,9 @@ export const buttonAvatarOpen = document.querySelector('.profile__image');
 export const popupCard = document.querySelector('.popup_type_card');
 export const popupProfile = document.querySelector('.popup_type_profile');
 export const popupAvatar = document.querySelector('.popup_type_avatar');
-export const avatar = document.querySelector('.profile__image');
 export const popupDeletion = document.querySelector('.popup_type_delete-card');
-export const template = document.querySelector('.gallery__template').content;
+
+export const template = '#template'
 export const validationSettings  = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
